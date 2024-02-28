@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<div>
+    <h1>Summary</h1>
+    <h3>Your stocks</h3>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Total Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for userStock in userStocks %}
+            <tr>
+                <td class="c1">{{ userStock.symbol }}</td>
+                <td class="c2">{{ userStock.totalShares }}</td>
+                <td class="c3">{{ userStock.price }}</td>
+                <td class="c4">{{ userStock.totalValue }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Your Balance</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Total Value</th>
+                <th scope="col">Grand Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for userBalance in userBalances %}
+            <tr>
+                <td class="c1">{{ userBalance.totalValue }}</td>
+                <td class="c2">{{ userBalance.grandTotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

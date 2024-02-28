@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell Stock Shares
+{% endblock %}
+
+{% block main %}
+    <h1> Sell Your Stock Shares</h1>
+    <p>The dropdown list shows the stocks you own. Please select the stock you wish to sell, and enter the number of shares you wish to sell.</p>
+    <form action="/sell" method="post">
+                <select name="stocks">
+                    <option disabled selected>Select symbol</option>
+                    {% for stock in stocks %}
+                    <option value="{{ stock['symbol'] }}" class="selectpicker form-control">{{ stock["symbol"] }}</option>
+                    {% endfor %}
+                </select>
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Shares" type="text">
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
